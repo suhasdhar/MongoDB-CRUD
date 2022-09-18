@@ -9,6 +9,9 @@ const app = express();
 app.use(cors());
 app.use(bodyparser.json());
 
+//mongo db needs to be running on the port 27017
+//database 'database' should have been created in the Mongo DB already. The collection 'netflix' should also be preloaded.
+
 mongoose.connect("mongodb://localhost:27017/database").then(() => console.log("connected"))
   .catch((err) => console.error(err))
 var connection = mongoose.connection
@@ -70,26 +73,6 @@ app.get('/api/:name', (req, res) => {
   });
   res.send("successful");
 })
-
-
-
-
-// connection.once('open', async function () {
-
-//   const collection  = connection.db.collection("netflix");
-
-//   // collection.insertOne({ name: '3-idiots' });
-//   // collection.find({name:'3-idiots'}).toArray(function(err, data){
-//   //     console.log(data); // it will print your collection data
-//   // });
-//   // collection.deleteOne({ name: '3-idiots'});
-
-//   collection.find().toArray(function(err, data){
-//     console.log(data); // it will print your collection data
-// });
-
-// });
-
 
 
 //patch request to update the data in the database
