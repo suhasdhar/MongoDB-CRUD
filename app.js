@@ -89,7 +89,6 @@ app.patch("/api/:name", function (req, res) {
   collection.updateOne(
     { title: name }, {
     $set: {
-
       description: des,
       imdb_score: imdb
     }
